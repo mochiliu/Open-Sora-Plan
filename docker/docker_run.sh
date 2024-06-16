@@ -32,9 +32,10 @@ else
         --ulimit stack=67108864 \
         -e DISPLAY=$DISPLAY \
         -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
-        -v $PARENT_DIR:/home/$USER_NAME/workspace \
-        -w /home/$USER_NAME/workspace \
+        -v $PARENT_DIR:/home/$USERNAME/workspace \
+        -w /home/$USERNAME/workspace \
         $(cat $WORK_DIR/ports.txt) \
+        --entrypoint "/home/$USERNAME/workspace/postinstallscript.sh" \
         $TAG)
 fi
 
