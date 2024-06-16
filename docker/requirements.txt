@@ -38,3 +38,9 @@ urllib3==2.2.1
 uvicorn==0.27.1
 diffusers==0.24.0
 scikit-video==1.1.11
+cachetools==2.0.0
+google-auth==1.6.3
+future==0.17.1
+grpcio==1.48.2
+attrs==17.3.0
+async_timeout==4.0.0a3

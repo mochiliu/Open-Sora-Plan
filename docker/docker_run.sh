@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 WORK_DIR=$(dirname "$(readlink -f "$0")")
+PARENT_DIR=$(realpath "$WORK_DIR/..")
+echo $PARENT_DIR
+
 source $WORK_DIR/setup_env.sh
 
 RUNNING_IDS="$(docker ps --filter ancestor=$TAG --format "{{.ID}}")"
@@ -29,7 +32,7 @@ else
         --ulimit stack=67108864 \
         -e DISPLAY=$DISPLAY \
         -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
-        -v $PWD:/home/$USER_NAME/workspace \
+        -v $PARENT_DIR:/home/$USER_NAME/workspace \
         -w /home/$USER_NAME/workspace \
         $(cat $WORK_DIR/ports.txt) \
         $TAG)
